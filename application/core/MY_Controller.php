@@ -8,9 +8,12 @@ class MY_Controller extends CI_Controller
   function __construct($page = 'home')
     {
     parent::__construct();
+    $this->load->helper('url');
+    $this->load->helper('directory'); //load directory helper
     //return controller parent
     $this->load->view('layers/header');
-    $this->load->helper('url');
+
+
 
   }
 }

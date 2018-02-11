@@ -3,10 +3,8 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 mx-auto">
-      <h2>Contact Start Bootstrap</h2>
-      <p>Feel free to leave us a comment on the
-        <a href="http://startbootstrap.com/template-overviews/grayscale/">Grayscale template overview page</a>
-        on Start Bootstrap to give some feedback about this theme!</p>
+      <h2>Contacta con nosotros</h2>
+
       <ul class="list-inline banner-social-buttons">
         <li class="list-inline-item">
           <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg">
@@ -15,9 +13,9 @@
           </a>
         </li>
         <li class="list-inline-item">
-          <a href="https://github.com/BlackrockDigital/startbootstrap" class="btn btn-default btn-lg">
-            <i class="fa fa-github fa-fw"></i>
-            <span class="network-name">Github</span>
+          <a href="#" class="btn btn-default btn-lg">
+            <i class="fa fa-facebook fa-fw"></i>
+            <span class="network-name">facebook</span>
           </a>
         </li>
         <li class="list-inline-item">

@@ -3,15 +3,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <h2>About Grayscale</h2>
-        <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-          <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-        <p>This theme features stock photos by
-          <a href="http://gratisography.com/">Gratisography</a>
-          along with a custom Google Maps skin courtesy of
-          <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-        <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
-      </div>
+        <h2>¿Qui&eacute;nes Somos?</h2>
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
     </div>
   </div>
 </section>

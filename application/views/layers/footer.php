@@ -2,7 +2,8 @@
 <!-- Footer -->
 <footer>
   <div class="container text-center">
-    <p>Copyright &copy; Your Website 2018</p>
+    <p>Copyright &copy; Apocryphe-wear 2018</p>
+    
   </div>
 </footer>
 
@@ -13,11 +14,14 @@
 <!-- Plugin JavaScript -->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
 <!-- Custom scripts for this template -->
 <script src="js/grayscale.min.js"></script>
+
+<!-- Gallery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
 
 </body>
 
