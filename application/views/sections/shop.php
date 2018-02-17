@@ -8,6 +8,8 @@
       </p>
       <p><img height="20%" width="25%" src="<?php echo base_url('img/creditcards.png'); ?>"></p>
       <a href="#" class="btn btn-default btn-lg">Visita nuestra Tienda</a>
+      <p style="margin: 30px; 0px 0px;" id="logo-kchink"><img height="10%" width="10%" src="<?php echo base_url('img/kchink.jpg'); ?>"></p>
+      <p style="font-size: small;"><a target="_blank" href="https://www.beta.kichink.com/legales/terminos">@2016 Kichink Servicios S.A. de C.V. T&eacute;rminos y condiciones </a></p>
     </div>
   </div>
 </section>
