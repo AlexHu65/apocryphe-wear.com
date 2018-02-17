@@ -17,9 +17,11 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
     <!-- Gallery -->
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
@@ -44,7 +46,7 @@
               <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#download">Tienda</a>
+              <a class="nav-link js-scroll-trigger" href="#shop">Tienda</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#gallery">Galer&iacute;a</a>
@@ -63,7 +65,8 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 mx-auto">
-              <h1 class="brand-heading">Apocryphe</h1>
+
+              <div class="center" id="logo"><img width="60%" height="60%" src="http://localhost:8888/apocryphe-wear.com/img/logo.png"></div>
               <!--<p class="intro-text">A free, responsive, one page Bootstrap theme.
                 <br>Created by Start Bootstrap.</p>-->
               <a href="#about" class="btn btn-circle js-scroll-trigger">

@@ -1,8 +1,8 @@
 <!-- Gallery Section -->
-<section style="margin: 30px auto;" id="gallery" class="gallery-section text-center">
+<section style="margin-top: 30px;"  id="gallery" class="gallery-section text-center">
   <div class="container">
-    <div class="col-lg-8 mx-auto">
-      <h2>Gallery</h2>
+    <div class="col-lg-12 mx-auto">
+      <a href="#" class="btn btn-default btn-lg">Gallery</a>
       <div class="container container-fluid gallery-container">
           <div class="tz-gallery">
             <div class="row">

@@ -15,7 +15,7 @@ class Home extends MY_Controller
       {
 
         $this->load->view('sections/about.php');
-        $this->load->view('sections/download.php');
+        $this->load->view('sections/shop.php');
         $this->load->view('sections/gallery.php');
         $this->load->view('sections/contact.php');
         $this->load->view('layers/footer');
