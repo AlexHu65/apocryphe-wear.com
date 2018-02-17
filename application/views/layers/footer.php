@@ -19,10 +19,10 @@
         	<div class="col-md-2 footer-social animated fadeInDown">
             	<h4>Follow Us</h4>
             	<ul>
-                	<li><a href="#">Facebook</a></li>
-                	<li><a href="#">Twitter</a></li>
-                	<li><a href="#">Instagram</a></li>
-                	<li><a href="#">RSS</a></li>
+                	<li><a href="#"><span class="fa fa-facebook fa-fw"></span>Facebook</a></li>
+                	<li><a href="#"><span class="fa fa-twitter fa-fw"></span>Twitter</a></li>
+                	<li><a href="#"><span class="fa fa-instagram fa-fw"></span>Instagram</a></li>
+                	<li><a href="#"><span class="fa fa-rss fa-fw"></span>RSS</a></li>
                 </ul>
             </div>
           </div>
