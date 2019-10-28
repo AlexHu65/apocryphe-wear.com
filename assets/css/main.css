@@ -1,0 +1,195 @@
+/* fuentes etc */
+
+@import "./font/stylesheet.css";
+html{scroll-behavior: smooth;}
+body{background: #080608;font-display: auto;}
+/* menu header */
+.menu-wrapper{color: white;z-index: 100;position: fixed;width: 100%;}
+.menu-wrapper .menu {font-family: 'bebas_neueregular'; z-index: 101;transition: .5s;}
+.menu-wrapper ul{list-style: none;}
+.menu-wrapper ul li{display: inline-block; text-align: right; padding: 15px;padding-top: 30px;font-size: 25px;transition: .5s;}
+.menu-wrapper ul li a{text-decoration: none; color: inherit; transition: .2s;}
+.menu-wrapper ul li a:hover{color: #bdc3c7; text-decoration:line-through red;}
+/* home */
+.apc-home {padding-top: 1%; height: 100vh;min-height: 1080px;}
+.apc-logo{width: 85%;margin-left: 125px;}
+.apc-logo .logo { width: 50%;}
+/* contacto */
+.apc-contacto{height: 100vh; background: url('../img/contact-bg.jpg'); background-size: cover;background-position: center;background-repeat: no-repeat;padding-top: 100px; padding-bottom: 50px;min-height: 1080px;background-attachment: fixed;}
+.apc-contacto input{padding: 15px;width: 40%;background: none;color: white;border: none;border-bottom: 1px solid;text-transform: uppercase;}
+.apc-contacto input::placeholder{color: whitesmoke;}
+.apc-contacto input:focus{outline: none;}
+.apc-contacto textarea{padding: 15px;width: 40%;background: none;color: white;border: none;border-bottom: 1px solid;text-transform: uppercase;}
+.apc-contacto textarea::placeholder{color: whitesmoke;}
+.apc-contacto textarea:focus{outline: none;}
+.apc-contacto button {background: none;color: white;border: 1px solid;transition: .5s;}
+
+
+.form-wrapper h1{color: white;font-family: 'loveloblack';}
+
+
+.redes-wrapper {position: fixed;top: 350px; color: white;}
+.redes-wrapper ul{list-style: none;}
+.redes-wrapper ul li{padding: 10px;}
+.redes-wrapper ul li a{text-decoration: none; color: inherit;}
+.button-top{padding-top: 37px; padding-bottom: 37px;}
+.head-button{background: none;color: white;border: 1px solid;padding: 10px;font-family: 'loveloblack'; transition: .5s;}
+.head-button:focus{outline: none;}
+.head-button:hover{background-color: white;}
+.head-button:hover{color: black;border: 1px; solid black;}
+
+/* efectos */
+.menu-fixed{background: rgba(46, 49, 49, .8);}
+.menu-item-fixed{padding: 25px;font-size: 20px;}
+.menu-responsive{position: fixed;color: white;top: 25px;padding: 50px;z-index: 100;display: none;}
+.menu-responsive i{padding: 10px;}
+.dn {display: none;}
+/* gallery */
+.apc-gallery{height: auto;font-family: 'loveloblack';padding-top: 40px;padding-bottom: 40px;transition: .5s;}
+.apc-gallery h1{color: white;}
+.card{background: none;}
+.card-columns{padding-top: 40px;}
+.carousel{height: 1080px;}
+.carousel-control-prev {left: -130px;}
+.carousel-control-next {right: -130px;}
+.carousel-indicators li {border-radius: 32px;border: none;width: 7px;height: 7px;}
+.carousel-indicators li.active {border-radius: 32px;border: none;width: 7px;height: 7px;background-color: #f22613;}
+.redes-wrapper-mobile{display: none;}
+.separator{width: 45%;height: 2px;background-color: white;float: right;margin-right: 28%;display: none;}
+.separator-desk{width: 45%;height: 2px;background-color: white;float: right;margin-right: 28%;}
+
+
+/* about */
+.apc-about{height: auto; color: white;padding-top: 50px; padding-bottom: 50px;background: #2e3131;}
+.apc-about h1{height: auto; color: white;padding-top: 50px; padding-bottom: 50px;font-family: 'loveloblack';}
+.img-about{width: 100%;}
+.img-about img{width: 100%;}
+.content{padding-top: 55px; padding-bottom: 55px;}
+.text-about ul{list-style: none;padding: 0;}
+.redes-apc ul li{display: inline-block;font-size: 25px;padding: 5px;}
+.contacto-apc ul li{font-size: 15px;padding: 5px;}
+.stuff-apc ul li{padding: 5px;}
+.text-about{font-family: 'montserratregular';}
+.text-about h3, h4{font-size: 18px;font-family: 'montserratbold';}
+.suscribe{cursor: pointer;}
+.text-about a{ color:inherit;}
+.text-about a:hover{ color: #d64541;}
+.text-about p ul li a {padding:  5px;}
+
+.help-block{color: white;}
+
+.loader {position: fixed;left: 0px;top: 0px;width: 100%;height: 100%;z-index: 9999;}
+
+.loader1 {background: url('../img/loader1.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader2 {background: url('../img/loader2.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader3 {background: url('../img/loader3.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader4 {background: url('../img/loader4.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader5 {background: url('../img/loader5.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader6 {background: url('../img/loader6.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader7 {background: url('../img/loader7.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader8 {background: url('../img/loader8.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader9 {background: url('../img/loader9.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.loader10 {background: url('../img/loader10.gif') 50% 50% no-repeat rgb(0, 0, 0);}
+.help-form{padding: 10px;}
+.msg, .loading{color: white;}
+
+@media only screen and (max-width: 768px){
+
+  .apc-logo {width: 100%;margin-left: 0px;padding-top: 15%;}
+  .apc-logo .logo {width: 100%;}
+  .apc-home{height: 100vh;}
+  .menu-wrapper {display: none;}
+  .menu-wrapper .menu{width: 100%;background: black;}
+  .menu-wrapper .menu ul {padding: 15px;}
+  .menu-wrapper .menu ul li{display: inherit;padding: 15px;}
+  .menu-responsive span{cursor: pointer;}
+  .menu-wrapper, .menu{height: 100vh;}
+  .menu-responsive{display: block;}
+
+  .carousel{height: 1080px;}
+  .carousel-control-prev, .carousel-control-next {display: none;}
+  .carousel-indicators li {display: none;}
+  .apc-contacto input , .apc-contacto textarea {width: 90%;}
+  .redes-wrapper{display: none;}
+  .menu-wrapper .redes-wrapper-mobile{display: block;padding-left: 60px;}
+  .menu-wrapper .redes-wrapper-mobile ul li{display: inline-block;}
+  .separator{display: block;}
+  .contacto-apc ul li{padding: 15px;}
+
+}
+
+@media only screen and (max-width: 768px){
+  ..apc-contacto{background-position: inherit;}
+}
+
+@media only screen and (max-width: 425px){
+
+  .apc-logo {width: 100%;margin-left: 0px;padding-top: 15%;}
+  .apc-logo .logo {width: 100%;}
+  .apc-home{height: 100vh;}
+  .menu-wrapper {display: none;}
+  .menu-wrapper .menu{width: 100%;background: black;}
+  .menu-wrapper .menu ul {padding: 15px;}
+  .menu-wrapper .menu ul li{display: inherit;padding: 15px;}
+  .menu-responsive span{cursor: pointer;}
+  .menu-wrapper, .menu{height: 100vh;}
+  .menu-responsive{display: block;}
+
+  .carousel{height: 1080px;}
+  .carousel-control-prev, .carousel-control-next {display: none;}
+  .carousel-indicators li {display: none;}
+  .apc-contacto input , .apc-contacto textarea {width: 90%;}
+  .redes-wrapper{display: none;}
+  .menu-wrapper .redes-wrapper-mobile{display: block;padding-left: 60px;}
+  .menu-wrapper .redes-wrapper-mobile ul li{display: inline-block;}
+  .separator{display: block;}
+
+}
+
+@media only screen and (max-width: 375px){
+
+  .apc-logo {width: 100%;margin-left: 0px;padding-top: 15%;}
+  .apc-logo .logo {width: 100%;}
+  .apc-home{height: 100vh;}
+  .menu-wrapper {display: none;}
+  .menu-wrapper .menu{width: 100%;background: black;}
+  .menu-wrapper .menu ul {padding: 15px;}
+  .menu-wrapper .menu ul li{display: inherit;padding: 15px;}
+  .menu-responsive span{cursor: pointer;}
+  .menu-wrapper, .menu{height: 100vh;}
+  .menu-responsive{display: block;}
+
+  .carousel{height: 1080px;}
+  .carousel-control-prev, .carousel-control-next {display: none;}
+  .carousel-indicators li {display: none;}
+  .apc-contacto input , .apc-contacto textarea {width: 90%;}
+  .redes-wrapper{display: none;}
+  .menu-wrapper .redes-wrapper-mobile{display: block;padding-left: 60px;}
+  .menu-wrapper .redes-wrapper-mobile ul li{display: inline-block;}
+  .separator{display: block;}
+
+}
+
+@media only screen and (max-width: 320px){
+
+  .apc-logo {width: 100%;margin-left: 0px;padding-top: 15%;}
+  .apc-logo .logo {width: 100%;}
+  .apc-home{height: 100vh;}
+  .menu-wrapper {display: none;}
+  .menu-wrapper .menu{width: 100%;background: black;}
+  .menu-wrapper .menu ul {padding: 15px;}
+  .menu-wrapper .menu ul li{display: inherit;padding: 15px;}
+  .menu-responsive span{cursor: pointer;}
+  .menu-wrapper, .menu{height: 100vh;}
+  .menu-responsive{display: block;}
+
+  .carousel{height: 1080px;}
+  .carousel-control-prev, .carousel-control-next {display: none;}
+  .carousel-indicators li {display: none;}
+  .apc-contacto input , .apc-contacto textarea {width: 90%;}
+  .redes-wrapper{display: none;}
+  .menu-wrapper .redes-wrapper-mobile{display: block;padding-left: 60px;}
+  .menu-wrapper .redes-wrapper-mobile ul li{display: inline-block;}
+  .separator{display: block;}
+
+}

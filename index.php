@@ -1,315 +1,225 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2018, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2018, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-
-/*
- *---------------------------------------------------------------
- * APPLICATION ENVIRONMENT
- *---------------------------------------------------------------
- *
- * You can load different configurations depending on your
- * current environment. Setting the environment also influences
- * things like logging and error reporting.
- *
- * This can be set to anything, but default usage is:
- *
- *     development
- *     testing
- *     production
- *
- * NOTE: If you change these, also change the error_reporting() code below
- */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-
-/*
- *---------------------------------------------------------------
- * ERROR REPORTING
- *---------------------------------------------------------------
- *
- * Different environments will require different levels of error reporting.
- * By default development will show errors but testing and live will hide them.
- */
-switch (ENVIRONMENT)
-{
-	case 'development':
-		error_reporting(-1);
-		ini_set('display_errors', 1);
-	break;
-
-	case 'testing':
-	case 'production':
-		ini_set('display_errors', 0);
-		if (version_compare(PHP_VERSION, '5.3', '>='))
-		{
-			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
-		}
-		else
-		{
-			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
-		}
-	break;
-
-	default:
-		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'The application environment is not set correctly.';
-		exit(1); // EXIT_ERROR
-}
-
-/*
- *---------------------------------------------------------------
- * SYSTEM DIRECTORY NAME
- *---------------------------------------------------------------
- *
- * This variable must contain the name of your "system" directory.
- * Set the path if it is not in the same directory as this file.
- */
-	$system_path = 'system';
-
-/*
- *---------------------------------------------------------------
- * APPLICATION DIRECTORY NAME
- *---------------------------------------------------------------
- *
- * If you want this front controller to use a different "application"
- * directory than the default one you can set its name here. The directory
- * can also be renamed or relocated anywhere on your server. If you do,
- * use an absolute (full) server path.
- * For more info please see the user guide:
- *
- * https://codeigniter.com/user_guide/general/managing_apps.html
- *
- * NO TRAILING SLASH!
- */
-	$application_folder = 'application';
-
-/*
- *---------------------------------------------------------------
- * VIEW DIRECTORY NAME
- *---------------------------------------------------------------
- *
- * If you want to move the view directory out of the application
- * directory, set the path to it here. The directory can be renamed
- * and relocated anywhere on your server. If blank, it will default
- * to the standard location inside your application directory.
- * If you do move this, use an absolute (full) server path.
- *
- * NO TRAILING SLASH!
- */
-	$view_folder = '';
-
-
-/*
- * --------------------------------------------------------------------
- * DEFAULT CONTROLLER
- * --------------------------------------------------------------------
- *
- * Normally you will set your default controller in the routes.php file.
- * You can, however, force a custom routing by hard-coding a
- * specific controller class/function here. For most applications, you
- * WILL NOT set your routing here, but it's an option for those
- * special instances where you might want to override the standard
- * routing in a specific front controller that shares a common CI installation.
- *
- * IMPORTANT: If you set the routing here, NO OTHER controller will be
- * callable. In essence, this preference limits your application to ONE
- * specific controller. Leave the function name blank if you need
- * to call functions dynamically via the URI.
- *
- * Un-comment the $routing array below to use this feature
- */
-	// The directory name, relative to the "controllers" directory.  Leave blank
-	// if your controller is not in a sub-directory within the "controllers" one
-	// $routing['directory'] = '';
-
-	// The controller class file name.  Example:  mycontroller
-	// $routing['controller'] = '';
-
-	// The controller function you wish to be called.
-	// $routing['function']	= '';
-
-
-/*
- * -------------------------------------------------------------------
- *  CUSTOM CONFIG VALUES
- * -------------------------------------------------------------------
- *
- * The $assign_to_config array below will be passed dynamically to the
- * config class when initialized. This allows you to set custom config
- * items or override any default config values found in the config.php file.
- * This can be handy as it permits you to share one application between
- * multiple front controller files, with each file containing different
- * config values.
- *
- * Un-comment the $assign_to_config array below to use this feature
- */
-	// $assign_to_config['name_of_config_item'] = 'value of config item';
-
-
-
-// --------------------------------------------------------------------
-// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
-// --------------------------------------------------------------------
-
-/*
- * ---------------------------------------------------------------
- *  Resolve the system path for increased reliability
- * ---------------------------------------------------------------
- */
-
-	// Set the current directory correctly for CLI requests
-	if (defined('STDIN'))
-	{
-		chdir(dirname(__FILE__));
-	}
-
-	if (($_temp = realpath($system_path)) !== FALSE)
-	{
-		$system_path = $_temp.DIRECTORY_SEPARATOR;
-	}
-	else
-	{
-		// Ensure there's a trailing slash
-		$system_path = strtr(
-			rtrim($system_path, '/\\'),
-			'/\\',
-			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-		).DIRECTORY_SEPARATOR;
-	}
-
-	// Is the system path correct?
-	if ( ! is_dir($system_path))
-	{
-		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
-		exit(3); // EXIT_CONFIG
-	}
-
-/*
- * -------------------------------------------------------------------
- *  Now that we know the path, set the main path constants
- * -------------------------------------------------------------------
- */
-	// The name of THIS file
-	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
-
-	// Path to the system directory
-	define('BASEPATH', $system_path);
-
-	// Path to the front controller (this file) directory
-	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
-
-	// Name of the "system" directory
-	define('SYSDIR', basename(BASEPATH));
-
-	// The path to the "application" directory
-	if (is_dir($application_folder))
-	{
-		if (($_temp = realpath($application_folder)) !== FALSE)
-		{
-			$application_folder = $_temp;
-		}
-		else
-		{
-			$application_folder = strtr(
-				rtrim($application_folder, '/\\'),
-				'/\\',
-				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-			);
-		}
-	}
-	elseif (is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
-	{
-		$application_folder = BASEPATH.strtr(
-			trim($application_folder, '/\\'),
-			'/\\',
-			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-		);
-	}
-	else
-	{
-		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
-		exit(3); // EXIT_CONFIG
-	}
-
-	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
-
-	// The path to the "views" directory
-	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
-	{
-		$view_folder = APPPATH.'views';
-	}
-	elseif (is_dir($view_folder))
-	{
-		if (($_temp = realpath($view_folder)) !== FALSE)
-		{
-			$view_folder = $_temp;
-		}
-		else
-		{
-			$view_folder = strtr(
-				rtrim($view_folder, '/\\'),
-				'/\\',
-				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-			);
-		}
-	}
-	elseif (is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
-	{
-		$view_folder = APPPATH.strtr(
-			trim($view_folder, '/\\'),
-			'/\\',
-			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-		);
-	}
-	else
-	{
-		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
-		exit(3); // EXIT_CONFIG
-	}
-
-	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
-
-/*
- * --------------------------------------------------------------------
- * LOAD THE BOOTSTRAP FILE
- * --------------------------------------------------------------------
- *
- * And away we go...
- */
-require_once BASEPATH.'core/CodeIgniter.php';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148592595-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-148592595-1');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Creadores de un estilo , street wear y diseño de prendas atemporal únicas y de vanguardia ,evitamos los moldes utilizando un estilo propio.">
+  <meta name="title" content="Apocryphe Wear - street wear">
+  <meta name="keywords" content="Apocryphe, street, wear, tshirts, playeras, moda, white, diseño, atemporal">
+  <meta name="google-site-verification" content="DxZO3QofPr2ZS7_9pj3M4Z2ZCzFwgnKCf-VweZ1Sfnk" />
+  <meta name="google-site-verification" content="UtyAmM_lFxF1J_Z49F69o0wTnA2E0FfAk6BodvdA-BA" />
+
+  <title>Apocryphe Wear - Street Wear</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/aos.css">
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="icon" type="image/icon" href="./favicon.ico">
+</head>
+<body>
+  <div id="loader" class="loader loader1"></div>
+
+  <div class="menu-wrapper" id="menu-wrapper">
+    <div class="menu float-right">
+      <ul>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#about">ABOUT</a></li>
+      </ul>
+
+      <div class="separator"></div>
+      <div class="redes-wrapper-mobile">
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- home -->
+  <section id="home" class="apc-home">
+    <div class="apc-logo text-center">
+      <img src="./assets/img/logo-animation.gif" alt="logo-Apocryphe" class="logo">
+      <!-- <div class="button-top">
+      <button type="button" class="head-button" name="button">GALERIA</button>
+    </div> -->
+  </div>
+</section>
+
+<!-- contacto -->
+<section id="contacto" class="apc-contacto">
+  <div class="form-wrapper text-center" data-aos="fade-up">
+    <h1>CONTACTO</h1>
+    <form id="frm-contacto">
+      <div class="form-group">
+        <input type="text" name="nombre" placeholder="nombre" autocomplete="none">
+        <div class="help-form"><span class="help-block form-text text-muted"></span></div>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Em@il" autocomplete="none">
+        <div class="help-form"><span class="help-block form-text text-muted"></span></div>
+      </div>
+      <div class="form-group">
+        <input type="phone" name="telefono" placeholder="Telefono" autocomplete="none">
+        <div class="help-form"><span class="help-block form-text text-muted"></span></div>
+      </div>
+      <div class="form-group">
+        <textarea name="comentario" rows="8" cols="80" placeholder="comentario" autocomplete="off"></textarea>
+        <div class="help-form"><span class="help-block form-text text-muted"></span></div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="head-button" name="enviar">ENVIAR</button>
+        <div class="help-form">
+          <span class="loading dn"><i class="fa fa-circle-o-notch fa-spin"></i>&nbsp;ENVIANDO...</span>
+
+        </div>
+        <div class="msg dn" role="alert"></div>
+      </div>
+    </form>
+  </div>
+</section>
+<!-- galeria -->
+<?php
+
+$nums = array();
+$cont = 0;
+$num = 21;
+
+while ($cont < $num) {
+  $random =  rand(1, 21);
+  if(!in_array($random, $nums)){
+    array_push($nums, $random);
+    $cont++;
+  }
+}
+
+?>
+
+<section id="galeria" class="apc-gallery">
+  <div class="container">
+    <h1 class="text-center">GALERIA</h1>
+    <div class="card-columns">
+      <?php for ($i=0; $i <= 20 ; $i++) {
+        $img = $nums[$i];
+        ?>
+        <div data-aos="fade-up" class="card">
+        <img src="./assets/img/galeria/<?=$img?>.png" class="card-img-top">
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="apc-about">
+  <div class="container">
+    <div class="row content">
+      <div class="col-sm-3">
+        <div class="img-about text-center">
+          <img src="./assets/img/logo.png" alt="skull-apc">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="text-about redes-apc">
+          <h3>SIGUENOS</h3>
+          <p>
+            <ul>
+              <li> <a href="#"><i class="fab fa-facebook"></i></a> </li>
+              <li> <a href="#"><i class="fab fa-instagram"></i></a></li>
+              <li> <a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li> <a href="#"><i class="fab fa-pinterest"></i></a></li>
+            </ul>
+          </p>
+          <div class="text-about stuff-apc">
+            <h4>MAILING LIST</h4>
+            <p>
+              <span>Suscribete a nuestro mailing list para obtener las últimas noticias <br> promociones y novedades</span>
+            </p>
+            <form action="#" method="post">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Em@il">
+                <div class="input-group-prepend">
+                  <span class="input-group-text suscribe">Suscribirse <i class="fab fa-mailchimp chimp"></i></span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="text-about contacto-apc">
+          <h3>CONTACTO</h3>
+          <p>
+            <ul>
+              <li> <a href="#"><i class="fas fa-phone"></i>  (443)392-2532</a>  </li>
+              <li> <a href="#"><i class="fas fa-mobile-alt"></i> (477)865-1262</a>  </li>
+              <li> <a href="#"><i class="fab fa-whatsapp"></i> (477)865-1262</a>  </li>
+              <li> <a href="mailto:contacto@apocryphe.com.mx"><i class="fas fa-envelope"></i> contacto@apocryphe.com.mx</a>  </li>
+            </ul>
+            <ul>
+              <li>
+                  #streetWear #tshirts #apocryphe #diseno #moda
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="text-about stuff-apc">
+          <h3>FUCKING BORING STUFF</h3>
+          <p>
+            <ul>
+              <li> <a href="#">Aviso de privacidad</a> </li>
+              <li> <a href="#">Uso de datos</a></li>
+              <li> <a href="#">Copyright</a></li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="text-center">&copy; Apocryphe 2019 Todos los derechos reservados.</p>
+    <p class="text-center text-muted">&copy; Desarrollado por <a target="_blank" href="https://www.linkedin.com/in/manuel-alejandro-chávez-núñez-277255b7">A. Chavez</a>.</p>
+
+  </div>
+
+</section>
+
+<div class="menu-responsive">
+  <span id="menu-button">
+    <i class="fas fa-bars"></i>
+  </span>
+</div>
+<div class="redes-wrapper text-center">
+  <ul>
+    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+  </ul>
+</div>
+
+<script src="./assets/js/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="./assets/js/jquery-ui.js" type="text/javascript"></script>
+<script src="./assets/js/jquery.smooth-scroll.js" type="text/javascript"></script>
+<script src="./assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/aos.js" type="text/javascript"></script>
+<script src="./assets/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script src="./assets/js/all.min.js" type="text/javascript"></script>
+<script src="./assets/js/main.js" type="text/javascript"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+</body>
+</html>

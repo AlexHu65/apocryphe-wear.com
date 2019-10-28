@@ -1,5 +1,0 @@
-{
-    "require": {
-        "phalcon/breadcrumbs": "^1.3"
-    }
-}
